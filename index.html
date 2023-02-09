@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script></script>
+</head>
+<body>
+    <script>
+            
+
+
+        function getComputerChoice(){
+            let i=Math.random();
+            i *= 3;
+            i=Math.floor(i);
+            const choices = ["rock","paper","scissors"];
+            return choices[i];
+        }
+
+        function playRound(playerSelection,computerSelection){
+        
+            if (playerSelection==="rock" && computerSelection==="scissors"){
+                return "You Win! Rock beats Scissors";
+            }
+            if (playerSelection==="scissors" && computerSelection==="paper"){
+                return "You Win! Scissors beats Paper";
+            }
+            if (playerSelection==="paper" && computerSelection==="rock"){
+                return "You Win! Paper beats Rock";
+            }
+            if (playerSelection==="scissors" && computerSelection==="rock"){
+                return "You Lose! Rock beats Scissors";
+            }
+            if (playerSelection==="paper" && computerSelection==="scissors"){
+                return "You Lose! Scissors beats Paper";
+            }
+            if (playerSelection==="rock" && computerSelection==="paper"){
+                return "You Lose! Paper beats Rock";
+            }
+        }
+
+        function game(){
+            let playerScore = 0;
+        let computerScore = 0;
+
+           
+
+            for (let i=0;i<5;i++){
+                
+                let playerSelection = prompt();
+                playerSelection = playerSelection.toLowerCase();
+                let computerSelection = getComputerChoice();
+                if (playerSelection===computerSelection){
+                    console.log("same, try again!");
+                    i--;
+                    continue;
+                }
+
+                let message = playRound(playerSelection,computerSelection);
+                console.log(message);
+                if (message.substr(4,1)==="W"){
+                    playerScore++;
+                }
+                else {
+                    computerScore++;
+                }
+
+
+            }
+
+            if (computerScore>playerScore) {
+                return `You Lose! Your Score is ${playerScore} and Computer's Score is ${computerScore} `
+            }
+            else {
+                return `You Win! Your Score is ${playerScore} and Computer's Score is ${computerScore} `  
+            }
+        }
+
+        console.log(game());
+
+
+    </script>
+</body>
+</html>
